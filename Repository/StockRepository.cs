@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using api.Data;
 using api.Dtos.Stock;
+using api.Helpers;
 using api.Interfaces;
 using api.Mappers;
 using api.Models;
@@ -39,9 +40,19 @@ namespace api.Repository
             return stock;
         }
 
-        public async Task<List<Stock>> GetAllAsync()
+        public async Task<List<Stock>> GetAllAsync(QueryObject query)
         {
-            return await _context.Stocks.Include(s => s.Comments).ToListAsync();
+            var stocks = _context.Stocks.Include(s => s.Comments).AsQueryable();
+            if (query != null)
+            {
+                if (!string.IsNullOrEmpty(query.Search))
+                    stocks = stocks.Where(s => s.Symbol.Contains(query.Search) || s.CompanyName.Contains(query.Search));
+                if (query.SortBy == "symbol")
+                    stocks = query.IsSortAscending ? stocks.OrderBy(s => s.Symbol) : stocks.OrderByDescending(s => s.Symbol);
+                if (query.SortBy == "companyName")
+                    stocks = query.IsSortAscending ? stocks.OrderBy(s => s.CompanyName) : stocks.OrderByDescending(s => s.CompanyName);
+            }
+            return await stocks.ToListAsync();
         }
 
         public async Task<Stock?> UpdateStockAsync(int id, UpdateStockRequestDto stock)
