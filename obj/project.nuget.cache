@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "P0gqTRgjd78=",
+  "dgSpecHash": "fj6z9SfTSDg=",
   "success": true,
   "projectFilePath": "/Users/lamngoc/learn/dotnet-demo/api/api.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,7 @@
     "/Users/lamngoc/.nuget/packages/microsoft.aspnetcore.authentication.jwtbearer/8.0.8/microsoft.aspnetcore.authentication.jwtbearer.8.0.8.nupkg.sha512",
     "/Users/lamngoc/.nuget/packages/microsoft.aspnetcore.cryptography.internal/8.0.8/microsoft.aspnetcore.cryptography.internal.8.0.8.nupkg.sha512",
     "/Users/lamngoc/.nuget/packages/microsoft.aspnetcore.cryptography.keyderivation/8.0.8/microsoft.aspnetcore.cryptography.keyderivation.8.0.8.nupkg.sha512",
+    "/Users/lamngoc/.nuget/packages/microsoft.aspnetcore.identity.entityframeworkcore/8.0.8/microsoft.aspnetcore.identity.entityframeworkcore.8.0.8.nupkg.sha512",
     "/Users/lamngoc/.nuget/packages/microsoft.aspnetcore.jsonpatch/8.0.8/microsoft.aspnetcore.jsonpatch.8.0.8.nupkg.sha512",
     "/Users/lamngoc/.nuget/packages/microsoft.aspnetcore.mvc.newtonsoftjson/8.0.8/microsoft.aspnetcore.mvc.newtonsoftjson.8.0.8.nupkg.sha512",
     "/Users/lamngoc/.nuget/packages/microsoft.aspnetcore.openapi/8.0.8/microsoft.aspnetcore.openapi.8.0.8.nupkg.sha512",
@@ -32,6 +33,7 @@
     "/Users/lamngoc/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/8.0.0/microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
     "/Users/lamngoc/.nuget/packages/microsoft.extensions.dependencymodel/8.0.1/microsoft.extensions.dependencymodel.8.0.1.nupkg.sha512",
     "/Users/lamngoc/.nuget/packages/microsoft.extensions.identity.core/8.0.8/microsoft.extensions.identity.core.8.0.8.nupkg.sha512",
+    "/Users/lamngoc/.nuget/packages/microsoft.extensions.identity.stores/8.0.8/microsoft.extensions.identity.stores.8.0.8.nupkg.sha512",
     "/Users/lamngoc/.nuget/packages/microsoft.extensions.logging/8.0.0/microsoft.extensions.logging.8.0.0.nupkg.sha512",
     "/Users/lamngoc/.nuget/packages/microsoft.extensions.logging.abstractions/8.0.0/microsoft.extensions.logging.abstractions.8.0.0.nupkg.sha512",
     "/Users/lamngoc/.nuget/packages/microsoft.extensions.options/8.0.2/microsoft.extensions.options.8.0.2.nupkg.sha512",

@@ -120,3 +120,5 @@
 /Users/lamngoc/learn/dotnet-demo/api/bin/Debug/net8.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 /Users/lamngoc/learn/dotnet-demo/api/bin/Debug/net8.0/Microsoft.IdentityModel.Tokens.dll
 /Users/lamngoc/learn/dotnet-demo/api/bin/Debug/net8.0/System.IdentityModel.Tokens.Jwt.dll
+/Users/lamngoc/learn/dotnet-demo/api/bin/Debug/net8.0/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+/Users/lamngoc/learn/dotnet-demo/api/bin/Debug/net8.0/Microsoft.Extensions.Identity.Stores.dll
