@@ -20,5 +20,24 @@ namespace api.Mappers
                 CreatedAt = stockModel.CreatedAt
             };
         }
+        public static Comment ToCommentFromCreateDto(this CreateCommentRequestDto stockModel, int stockId)
+        {
+            return new Comment
+            {
+                Title = stockModel.Title,
+                Content = stockModel.Content,
+                StockId = stockId,
+                CreatedAt = DateTime.Now.ToUniversalTime(),
+            };
+        }
+
+        public static Comment ToCommentFromUpdateDto(this UpdateCommentRequestDto stockModel)
+        {
+            return new Comment
+            {
+                Title = stockModel.Title,
+                Content = stockModel.Content,
+            };
+        }
     }
 }

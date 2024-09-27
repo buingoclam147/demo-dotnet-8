@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Threading.Tasks;
+using api.Dtos.Comment;
 using api.Interfaces;
 using api.Mappers;
 using Microsoft.AspNetCore.Mvc;
@@ -15,11 +17,13 @@ namespace api.Controllers
     {
         private readonly ILogger<CommentController> _logger;
         private readonly ICommentRepository _commentRepository;
+        private readonly IStockRepository _stockRepository;
 
-        public CommentController(ILogger<CommentController> logger, ICommentRepository commentRepository)
+        public CommentController(ILogger<CommentController> logger, ICommentRepository commentRepository, IStockRepository stockRepository)
         {
             _logger = logger;
             _commentRepository = commentRepository;
+            _stockRepository = stockRepository;
         }
 
         [HttpGet]
@@ -40,5 +44,30 @@ namespace api.Controllers
             }
             return Ok(comment.ToCommentDto());
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Create([FromHeader] int stockId, [FromBody] CreateCommentRequestDto commentDto)
+        {
+            if (!await _stockRepository.StockExists(stockId))
+            {
+                return BadRequest("Stock does not exist");
+            }
+            var commentModel = commentDto.ToCommentFromCreateDto(stockId);
+            await _commentRepository.CreateCommentAsync(commentModel);
+            return CreatedAtAction(nameof(GetById), new { id = commentModel.Id }, commentModel.ToCommentDto());
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateCommentRequestDto commentDto)
+        {
+            var comment = await _commentRepository.UpdateCommentAsync(id, commentDto.ToCommentFromUpdateDto());
+            if (comment == null)
+            {
+                return NotFound();
+            }
+            return NoContent();
+        }
+
+
     }
 }
