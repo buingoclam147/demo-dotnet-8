@@ -63,11 +63,20 @@ namespace api.Controllers
             var comment = await _commentRepository.UpdateCommentAsync(id, commentDto.ToCommentFromUpdateDto());
             if (comment == null)
             {
-                return NotFound();
+                return NotFound("Comment does not exist");
             }
             return NoContent();
         }
 
-
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete([FromRoute] int id)
+        {
+            var comment = await _commentRepository.DeleteCommentAsync(id);
+            if (comment == null)
+            {
+                return NotFound("Comment does not exist");
+            }
+            return NoContent();
+        }
     }
 }
