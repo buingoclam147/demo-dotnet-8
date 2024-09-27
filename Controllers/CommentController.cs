@@ -34,7 +34,7 @@ namespace api.Controllers
             return Ok(commentDto);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
             var comment = await _commentRepository.GetByIdAsync(id);
@@ -57,7 +57,7 @@ namespace api.Controllers
             return CreatedAtAction(nameof(GetById), new { id = commentModel.Id }, commentModel.ToCommentDto());
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("{id:int}")]
         public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateCommentRequestDto commentDto)
         {
             var comment = await _commentRepository.UpdateCommentAsync(id, commentDto.ToCommentFromUpdateDto());
@@ -68,7 +68,7 @@ namespace api.Controllers
             return NoContent();
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("{id:int}")]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
             var comment = await _commentRepository.DeleteCommentAsync(id);
