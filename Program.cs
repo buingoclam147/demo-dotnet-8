@@ -28,10 +28,10 @@ builder.Services.AddControllers().AddNewtonsoftJson(option =>
 builder.Services.AddIdentity<AppUser, IdentityRole>(option =>
 {
   option.Password.RequireDigit = true;
-  option.Password.RequireLowercase = true;
-  option.Password.RequireUppercase = true;
+  option.Password.RequireLowercase = false;
+  option.Password.RequireUppercase = false;
   option.Password.RequireNonAlphanumeric = true;
-  option.Password.RequiredLength = 8;
+  option.Password.RequiredLength = 6;
 })
   .AddEntityFrameworkStores<ApplicationDBContext>()
   .AddDefaultTokenProviders();
