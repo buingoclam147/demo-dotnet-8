@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using api.Dtos.Comment;
 using api.Interfaces;
 using api.Mappers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -27,6 +28,7 @@ namespace api.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> GetAll()
         {
             var comments = await _commentRepository.GetAllAsync();
@@ -35,6 +37,7 @@ namespace api.Controllers
         }
 
         [HttpGet("{id:int}")]
+        [Authorize]
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
             var comment = await _commentRepository.GetByIdAsync(id);
@@ -46,6 +49,7 @@ namespace api.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Create([FromHeader] int stockId, [FromBody] CreateCommentRequestDto commentDto)
         {
             if (!await _stockRepository.StockExists(stockId))
@@ -58,6 +62,7 @@ namespace api.Controllers
         }
 
         [HttpPut("{id:int}")]
+        [Authorize]
         public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateCommentRequestDto commentDto)
         {
             var comment = await _commentRepository.UpdateCommentAsync(id, commentDto.ToCommentFromUpdateDto());
@@ -69,6 +74,7 @@ namespace api.Controllers
         }
 
         [HttpDelete("{id:int}")]
+        [Authorize]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
             var comment = await _commentRepository.DeleteCommentAsync(id);
